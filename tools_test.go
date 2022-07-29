@@ -322,3 +322,4 @@ func TestTools_ErrorJSON(t *testing.T) {
 		t.Errorf("wrong status code returned; expected 503, but got %d", rr.Code)
 	}
 }
+
