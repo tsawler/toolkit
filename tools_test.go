@@ -34,8 +34,8 @@ func TestTools_PushJSONToRemote(t *testing.T) {
 		// Test Request Parameters
 		return &http.Response{
 			StatusCode: http.StatusOK,
-			Body: ioutil.NopCloser(bytes.NewBufferString("ok")),
-			Header: make(http.Header),
+			Body:       ioutil.NopCloser(bytes.NewBufferString("ok")),
+			Header:     make(http.Header),
 		}
 	})
 
@@ -237,7 +237,7 @@ func TestTools_DownloadStaticFile(t *testing.T) {
 
 	var testTool Tools
 
-	testTool.DownloadStaticFile(rr, req, "./testdata", "pic.jpg", "puppy.jpg")
+	testTool.DownloadStaticFile(rr, req, "./testdata/pic.jpg", "puppy.jpg")
 
 	res := rr.Result()
 	defer res.Body.Close()
@@ -356,4 +356,3 @@ func TestTools_ErrorJSON(t *testing.T) {
 		t.Errorf("wrong status code returned; expected 503, but got %d", rr.Code)
 	}
 }
-
