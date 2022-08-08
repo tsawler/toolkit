@@ -9,6 +9,7 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"path"
 	"path/filepath"
 	"regexp"
 	"strings"
@@ -188,10 +189,11 @@ func (t *Tools) Slugify(s string) (string, error) {
 // DownloadStaticFile downloads a file, and tries to force the browser to avoid displaying it
 // in the browser window by setting content disposition. It also allows specification of the
 // display name
-func (t *Tools) DownloadStaticFile(w http.ResponseWriter, r *http.Request, pathName, displayName string) {
+func (t *Tools) DownloadStaticFile(w http.ResponseWriter, r *http.Request, p, file, displayName string) {
+	fp := path.Join(p, file)
 	w.Header().Set("Content-Disposition", fmt.Sprintf("attachment; filename=\"%s\"", displayName))
 
-	http.ServeFile(w, r, pathName)
+	http.ServeFile(w, r, fp)
 }
 
 // JSONResponse is the type used for sending JSON around

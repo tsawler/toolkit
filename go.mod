@@ -1,3 +1,4 @@
-module github.com/tsawler/toolkit/v2
+module github.com/tsawler/toolkit
+
 
 go 1.18
